@@ -16,3 +16,8 @@ if __name__ == '__main__':
     print(subtil.idade)
     for filho in subtil.filhos:
         print(filho.nome)
+    subtil.sobrenome = 'Oliveira' # apenas para esse objeto
+    del subtil.filhos # Não é uma boa pratica
+    print(subtil.sobrenome)
+    print(subtil.__dict__)
+    print(gabriel.__dict__)
