@@ -1,4 +1,6 @@
 class Pessoa:
+    olhos = 2 # atributo default ou atributo de classe
+
     def __init__(self, *filhos, nome=None, idade=33):
         self.nome = nome
         self.idade = idade
@@ -21,3 +23,6 @@ if __name__ == '__main__':
     print(subtil.sobrenome)
     print(subtil.__dict__)
     print(gabriel.__dict__)
+    print(gabriel.olhos)
+    print(subtil.olhos)
+    print(id(Pessoa.olhos), id(subtil.olhos), id(gabriel.olhos))
