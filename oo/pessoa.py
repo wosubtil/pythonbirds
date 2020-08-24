@@ -17,11 +17,14 @@ class Pessoa:
     def nome_e_atributos_de_classe(cls):
         return f'{cls} - olhos {cls.olhos}'
 
+class Homem(Pessoa):
+    pass
+
 if __name__ == '__main__':
-    gabriel = Pessoa(nome='Gabriel')
-    subtil = Pessoa(gabriel, nome='Subtil')
+    gabriel = Homem(nome='Gabriel')
+    subtil = Homem(gabriel, nome='Subtil')
     print(id(subtil))
-    print(subtil.cumprimentar()) # Passagem implicita de p
+    print(subtil.cumprimentar())  # Passagem implicita de p
     print(subtil.nome)
     print(subtil.idade)
     for filho in subtil.filhos:
@@ -36,3 +39,8 @@ if __name__ == '__main__':
     print(id(Pessoa.olhos), id(subtil.olhos), id(gabriel.olhos))
     print(Pessoa.metodo_estatico(), subtil.metodo_estatico())
     print(Pessoa.nome_e_atributos_de_classe(), subtil.nome_e_atributos_de_classe())
+    pessoa = Pessoa('Anonimo')
+    print(isinstance(pessoa, Pessoa))
+    print(isinstance(pessoa, Homem))
+    print(isinstance(gabriel, Pessoa))
+    print(isinstance(gabriel, Homem))
