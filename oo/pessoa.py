@@ -7,7 +7,7 @@ class Pessoa:
         self.filhos = list(filhos)
 
     def cumprimentar(self):
-        return f'Olá {id(self)}'
+        return f'Olá, meu nome é: {self.nome}'
 
     @staticmethod
     def metodo_estatico():
@@ -18,10 +18,16 @@ class Pessoa:
         return f'{cls} - olhos {cls.olhos}'
 
 class Homem(Pessoa):
-    pass
+    def cumprimentar(self):
+        # cumprimentar_da_classe_pai = Pessoa.cumprimentar(self)  # Primeira forma
+        cumprimentar_da_classe_pai = super().cumprimentar()  # Executa sem o método da class pai
+        return f'{cumprimentar_da_classe_pai}. Aperto de mão'
+
+class Mutante(Pessoa):
+    olhos = 3
 
 if __name__ == '__main__':
-    gabriel = Homem(nome='Gabriel')
+    gabriel = Mutante(nome='Gabriel')
     subtil = Homem(gabriel, nome='Subtil')
     print(id(subtil))
     print(subtil.cumprimentar())  # Passagem implicita de p
@@ -44,3 +50,6 @@ if __name__ == '__main__':
     print(isinstance(pessoa, Homem))
     print(isinstance(gabriel, Pessoa))
     print(isinstance(gabriel, Homem))
+    print(gabriel.olhos)
+    print(gabriel.cumprimentar())
+    print(subtil.cumprimentar())
